@@ -46,3 +46,11 @@ mongoose.Promise = bluebird
 mongoose.connect('mongodb+srv://admin:IHHNpEWpT16g8TDM@kegtracker-oikv6.mongodb.net/test?retryWrites=true&w=majority', { useNewUrlParser:true })
 .then(()=> { console.log(`Succesfully Connected to the hosted mongodb`)})
 .catch(()=> { console.log(`Error Connecting to the hosted mongodb`)})
+
+
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "http://localhost:4200");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+  next();
+});
