@@ -9,13 +9,13 @@ var KegController = require('../../controllers/keg.controller');
 
 // Map each API to the Controller FUnctions
 
-router.get('/', KegController.getTodos)
+router.get('/', KegController.getKegs)
 
-router.post('/', KegController.createTodo)
+router.post('/', KegController.createKeg)
 
-router.put('/', KegController.updateTodo)
+router.put('/', KegController.updateKeg)
 
-router.delete('/:id',KegController.removeTodo)
+router.delete('/:id',KegController.removeKeg)
 
 
 // Export the Router

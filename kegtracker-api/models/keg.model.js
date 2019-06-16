@@ -3,8 +3,8 @@ var mongoosePaginate = require('mongoose-paginate')
 
 
 var KegSchema = new mongoose.Schema({
-    kegnum: BigInt64Array,
-    kegcapacity: BigInt64Array,
+    kegnum: String,
+    kegcapacity: String,
 })
 
 KegSchema.plugin(mongoosePaginate)
