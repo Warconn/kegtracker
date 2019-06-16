@@ -8,6 +8,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 var app = express();
+var bluebird = require('bluebird')
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -40,3 +41,8 @@ app.use(function(err, req, res, next) {
 
 module.exports = app;
 
+var mongoose = require('mongoose')
+mongoose.Promise = bluebird
+mongoose.connect('mongodb+srv://admin:IHHNpEWpT16g8TDM@kegtracker-oikv6.mongodb.net/test?retryWrites=true&w=majority', { useNewUrlParser:true })
+.then(()=> { console.log(`Succesfully Connected to the hosted mongodb`)})
+.catch(()=> { console.log(`Error Connecting to the hosted mongodb`)})
