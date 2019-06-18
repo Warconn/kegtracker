@@ -48,7 +48,7 @@ module.exports = app;
 
 var mongoose = require('mongoose')
 mongoose.Promise = bluebird
-mongoose.connect('mongodb+srv://admin:IHHNpEWpT16g8TDM@kegtracker-oikv6.mongodb.net/test?retryWrites=true&w=majority', { useNewUrlParser:true })
+mongoose.connect('mongodb+srv://admin:IHHNpEWpT16g8TDM@kegtracker-oikv6.mongodb.net/kegtracker?retryWrites=true&w=majority', { useNewUrlParser:true })
 .then(()=> { console.log(`Succesfully Connected to the hosted mongodb`)})
 .catch(()=> { console.log(`Error Connecting to the hosted mongodb`)})
 

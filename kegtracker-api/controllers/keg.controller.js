@@ -33,12 +33,11 @@ exports.getKegs = async function(req, res, next){
 }
 
 exports.createKeg = async function(req, res, next){
-
-    // Req.Body contains the form submit values.
-
+    console.log(req.body);
     var keg = {
         kegnum: req.body.kegnum,
         kegcapacity: req.body.kegcapacity,
+        beername: req.body.beername
     }
 
     try{

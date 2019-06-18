@@ -39,12 +39,11 @@ exports.createKeg = async function(keg){
 
     var newKeg = new Keg({
         kegnum: keg.kegnum,
-        kegcapacity: keg.kegcapacity
-    })
+        kegcapacity: keg.kegcapacity,
+        beername: keg.beername
+    });
 
     try{
-
-        // Saving the Todo 
         var savedKeg = await newKeg.save()
 
         return savedKeg;
@@ -77,6 +76,7 @@ exports.updateKeg = async function(keg){
 
     oldKeg.kegnum = keg.kegnum
     oldKeg.kegcapacity = keg.kegcapacity
+    oldKeg.beername = keg.beername
 
     console.log(oldKeg)
 
