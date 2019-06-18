@@ -1,11 +1,8 @@
 import Keg from '../models/keg.model';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-
-//RxJS operator for mapping the observable
-
-import { Observable } from 'rxjs';
-import { map } from "rxjs/operators";
+import 'rxjs/Rx';
+import { Observable } from 'rxjs/Rx';
 
 @Injectable()
 export class KegService {
@@ -27,11 +24,11 @@ export class KegService {
   //Read todo, takes no arguments
   getKegs(): Observable<Keg[]>{
     return this.http.get(this.kegUrl)
-    .pipe(map(res  => {
+    .map(res  => {
       //Maps the response object sent from the server
         
       return res["data"].docs as Keg[];
-    }))
+    })
   }
   //Update todo, takes a ToDo Object as parameter
   editKeg(keg:Keg){
@@ -44,9 +41,9 @@ export class KegService {
     //Delete the object by the id
     let deleteUrl = `${this.kegUrl}/${id}`
     return this.http.delete(deleteUrl)
-    .pipe(map(res  => {
+    .map(res  => {
       return res;
-    }))
+    })
   }
 
   //Default Error handling method.

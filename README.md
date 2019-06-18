@@ -11,3 +11,5 @@ Simple framework for tracking how many beers are left in the two kegs in the bas
 5. Add Keg Names/Info
 6. Add a "Bar" container
 7. Add bottles/cans
+
+**Needed CORS extension to get past the browser blocking
