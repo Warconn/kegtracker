@@ -7,7 +7,7 @@
 </div>
 
 <div class="row" *ngIf="kegList">
-  <div *ngFor="let keg of kegList"class="col-md-4">
+  <div *ngFor="let keg of kegList" class="col-md-4">
       <div >
         {{keg.kegnum}}
         <br>
@@ -15,7 +15,7 @@
         <br>
         {{keg.currentvolume}} of {{keg.kegcapacity}}
         <br>
-        <button (click)="pourBeer($keg)">Pour Beer!</button>
+        <button (click)="pourBeer(keg)">Pour Beer!</button>
       </div>
   </div>
 </div>
