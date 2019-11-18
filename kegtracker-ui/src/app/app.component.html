@@ -1,4 +1,3 @@
-<!--The content below is only a placeholder and can be replaced.-->
 <div class="row">
   <div class="col-md-8">
     <h1>
@@ -8,9 +7,13 @@
 </div>
 
 <div class="row" *ngIf="kegList">
-  <div *ngFor="let keg of kegList">
-      <div class="col-md-2">
+  <div *ngFor="let keg of kegList"class="col-md-4">
+      <div >
         {{keg.kegnum}}
+        <br>
+        {{keg.beername}}
+        <br>
+        {{keg.kegcapacity}}
       </div>
   </div>
 </div>

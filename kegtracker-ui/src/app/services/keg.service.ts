@@ -23,9 +23,7 @@ export class KegService {
 
   getKegs(): Observable<Keg[]>{
     return this.http.get(this.kegUrl)
-    .map(res  => {
-      //Maps the response object sent from the server
-        
+    .map(res  => {       
       return res["data"].docs as Keg[];
     })
   }
