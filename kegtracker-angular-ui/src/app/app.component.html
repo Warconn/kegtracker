@@ -1,23 +1,16 @@
-<div class="row">
-  <div class="col-md-12">
-    <h1>
-      Keg Tracker
-    </h1>
-  </div>
-</div>
-
-<div class="row" *ngIf="kegList">
-  <div *ngFor="let keg of kegList" class="col-md-4">
-      <div >
-        {{keg.kegnum}}
-        <br>
-        {{keg.beername}}
-        <br>
-        {{keg.currentvolume}} of {{keg.kegcapacity}}
-        <br>
-        <button (click)="pourBeer(keg)">Pour Beer!</button>
-      </div>
-  </div>
+<div *ngIf="kegList">
+  <mat-grid-list cols="3" gutterSize="5px">
+    <mat-grid-tile *ngFor="let keg of kegList">
+      <mat-list>
+        <mat-list-item> {{keg.kegnum}} </mat-list-item>
+        <mat-list-item> {{keg.beername}} </mat-list-item>
+        <mat-list-item> {{keg.currentvolume}} of {{keg.kegcapacity}}</mat-list-item>
+        <mat-list-item>      
+          <button (click)="pourBeer(keg)">Pour Beer!</button>
+        </mat-list-item>
+      </mat-list>
+    </mat-grid-tile>
+  </mat-grid-list>
 </div>
 
 <router-outlet></router-outlet>
