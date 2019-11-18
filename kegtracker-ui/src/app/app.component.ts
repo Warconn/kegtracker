@@ -31,4 +31,8 @@ export class AppComponent implements OnInit {
         console.log(kegs)
       })
   }
+
+  pourBeer(keg: Keg) {
+    console.log(keg.beername + " poured!")
+  }
 }
