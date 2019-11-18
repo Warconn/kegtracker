@@ -21,7 +21,6 @@ export class KegService {
     return this.http.post(`${this.kegUrl}`, keg);
   }
 
-  //Read todo, takes no arguments
   getKegs(): Observable<Keg[]>{
     return this.http.get(this.kegUrl)
     .map(res  => {
