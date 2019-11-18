@@ -34,6 +34,17 @@ export class AppComponent implements OnInit {
 
   pourBeer(keg: Keg) {
     
+    if(keg.currentvolume > 1){  //current volume is greater than 1
+      console.log("Current Volume: " + keg.currentvolume);
+      //subtract a pint
+      keg.currentvolume--;
+      console.log("New Volume: " + keg.currentvolume);
+
+      this.kegService.editKeg(keg)
+        .subscribe(ret => {
+          console.log(ret);
+        })
+    }
     console.log(keg.beername +" poured!")
   }
 }

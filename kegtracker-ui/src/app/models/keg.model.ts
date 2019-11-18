@@ -1,16 +1,16 @@
 class Keg {
     _id:string;
-    kegnum: String;
-    kegcapacity: String;
+    kegnum: number;
+    kegcapacity: number;
     beername: String;
-    currentvolume: String;
+    currentvolume: number;
 
 
     constructor(){
-        this.kegnum = "";
-        this.kegcapacity = "";
+        this.kegnum = 0;
+        this.kegcapacity = 0;
         this.beername = "";
-        this.currentvolume = "";
+        this.currentvolume = 0;
     }
     
 }

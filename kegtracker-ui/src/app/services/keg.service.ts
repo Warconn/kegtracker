@@ -27,7 +27,7 @@ export class KegService {
       return res["data"].docs as Keg[];
     })
   }
-  //Update todo, takes a ToDo Object as parameter
+
   editKeg(keg:Keg){
     let editUrl = `${this.kegUrl}`
     //returns the observable of http put request 

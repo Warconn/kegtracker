@@ -3,10 +3,10 @@ var mongoosePaginate = require('mongoose-paginate')
 
 
 var KegSchema = new mongoose.Schema({
-    kegnum: String,
-    kegcapacity: String,
+    kegnum: Number,
+    kegcapacity: Number,
     beername: String, 
-    currentvolume: String
+    currentvolume: Number
 })
 
 KegSchema.plugin(mongoosePaginate)
