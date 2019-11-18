@@ -20,8 +20,6 @@ export class KegtrackingService {
     return this.http.post(`${this.kegUrl}`, keg);
   }
 
-
-
   getKegs(): Observable<Keg[]>{
     return this.http.get(this.kegUrl)
     .pipe(map(res  => {       
