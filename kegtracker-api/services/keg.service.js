@@ -40,7 +40,8 @@ exports.createKeg = async function(keg){
     var newKeg = new Keg({
         kegnum: keg.kegnum,
         kegcapacity: keg.kegcapacity,
-        beername: keg.beername
+        beername: keg.beername, 
+        currentvolume: keg.currentvolume
     });
 
     try{
@@ -77,6 +78,7 @@ exports.updateKeg = async function(keg){
     oldKeg.kegnum = keg.kegnum
     oldKeg.kegcapacity = keg.kegcapacity
     oldKeg.beername = keg.beername
+    oldKeg.currentvolume = keg.currentvolume
 
     console.log(oldKeg)
 

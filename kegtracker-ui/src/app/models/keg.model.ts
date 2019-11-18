@@ -3,12 +3,14 @@ class Keg {
     kegnum: String;
     kegcapacity: String;
     beername: String;
+    currentvolume: String;
 
 
     constructor(){
         this.kegnum = "";
         this.kegcapacity = "";
         this.beername = "";
+        this.currentvolume = "";
     }
     
 }
