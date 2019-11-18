@@ -69,7 +69,8 @@ exports.updateKeg = async function(req, res, next){
     var keg = {
         id,
         kegnum: req.body.kegnum ? req.body.kegnum : null,
-        kegcapacity: req.body.kegcapacity ? req.body.kegcapacity : null
+        kegcapacity: req.body.kegcapacity ? req.body.kegcapacity : null, 
+        beername: req.body.beername ? req.body.beername : ""
     }
 
     try{
