@@ -1,0 +1,16 @@
+<div *ngIf="kegList">
+  <mat-grid-list cols="3" gutterSize="5px">
+    <mat-grid-tile *ngFor="let keg of kegList">
+      <mat-list>
+        <mat-list-item> {{keg.kegnum}} </mat-list-item>
+        <mat-list-item> {{keg.beername}} </mat-list-item>
+        <mat-list-item> {{keg.currentvolume}} of {{keg.kegcapacity}}</mat-list-item>
+        <mat-list-item>      
+          <button (click)="pourBeer(keg)">Pour Beer!</button>
+        </mat-list-item>
+      </mat-list>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
+
+<router-outlet></router-outlet>
