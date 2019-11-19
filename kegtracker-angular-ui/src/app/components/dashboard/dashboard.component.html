@@ -7,6 +7,13 @@
             [value]="keg.currentvolume" 
             [minValue]="0" 
             [maxValue]="keg.kegcapacity" 
+            [waveColor]="'#DAAA00'" 
+            [waveAnimate]="false" 
+            [circleColor]="'#000000'"
+            [waveRise]="false"
+            [displayPercent]="false"
+            [textColor]="'#000000'" 
+            [waveTextColor]="'#000000'"
            >
           </lib-ngx-liquid-gauge>
           <button (click)="pourBeer(keg)">Pour Beer!</button>
