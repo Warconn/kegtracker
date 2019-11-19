@@ -1,22 +1,18 @@
-import { Component } from '@angular/core';
-import {KegtrackingService} from './services/kegtracking.service';
-import Keg from './models/keg.model';
-
+import { Component, OnInit } from '@angular/core';
+import {KegtrackingService} from '@app/services/kegtracking.service';
+import Keg from '@app/models/keg.model';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'app-dashboard',
+  templateUrl: './dashboard.component.html',
+  styleUrls: ['./dashboard.component.css']
 })
-export class AppComponent {
-  title = 'kegtracker-angular-ui';
-  
+export class DashboardComponent implements OnInit {
+
   constructor(
-    //Private todoservice will be injected into the component by Angular Dependency Injector
     private kegService: KegtrackingService
   ) { }
 
-  //Declaring the new todo Object and initilizing it
   public newKeg: Keg = new Keg()
 
   //An Empty list for the visible todo list
