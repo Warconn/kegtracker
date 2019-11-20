@@ -30,10 +30,13 @@ export class DashboardComponent implements OnInit {
       })
   }
 
-  pourBeer(keg: Keg) {
+  pourBeer(keg: Keg, ounces: number) {
     
     if(keg.currentvolume > 1){  //current volume is greater than 1
       console.log("Current Volume: " + keg.currentvolume);
+      
+      console.log(keg.beername +" poured " + ounces + "ounces");
+
       //subtract a pint
       keg.currentvolume--;
       console.log("New Volume: " + keg.currentvolume);
@@ -43,7 +46,6 @@ export class DashboardComponent implements OnInit {
           console.log(ret);
         })
     }
-    console.log(keg.beername +" poured!")
   }
 }
 
