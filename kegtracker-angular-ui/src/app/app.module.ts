@@ -16,6 +16,7 @@ import { MatListModule } from '@angular/material/list';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { DashboardComponent } from '@app/components/dashboard/dashboard.component';
 import { AdminComponent } from './components/admin/admin.component';
+import { NgxLiquidGaugeModule } from 'ngx-liquid-gauge';
 
 @NgModule({
   declarations: [
@@ -34,8 +35,8 @@ import { AdminComponent } from './components/admin/admin.component';
     MatSidenavModule,
     MatIconModule,
     MatListModule,
-    MatGridListModule
-
+    MatGridListModule,
+    NgxLiquidGaugeModule
   ],
   providers: [
     KegtrackingService
