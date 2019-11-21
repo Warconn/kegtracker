@@ -40,8 +40,10 @@ exports.createKeg = async function(keg){
     var newKeg = new Keg({
         kegnum: keg.kegnum,
         kegcapacity: keg.kegcapacity,
-        beername: keg.beername, 
-        currentvolume: keg.currentvolume
+        currentvolume: keg.currentvolume,
+        beer: {
+            beername: keg.beer.beername,
+        },
     });
 
     try{
@@ -59,27 +61,25 @@ exports.createKeg = async function(keg){
 exports.updateKeg = async function(keg){
     var id = keg.id
 
-    try{
-        //Find the old Todo Object by the Id
-    
+    try{  
         var oldKeg = await Keg.findById(id);
     }catch(e){
         throw Error("Error occured while Finding the keg")
     }
-
-    // If no old Todo Object exists return false
-
     if(!oldKeg){
         return false;
     }
 
-    console.log(oldKeg)
+    console.log("keg.beer");
+    console.log(keg.beer)
 
     oldKeg.kegnum = keg.kegnum
     oldKeg.kegcapacity = keg.kegcapacity
-    oldKeg.beername = keg.beername
     oldKeg.currentvolume = keg.currentvolume
+    oldKeg.beer = new Array;
+    oldKeg.beer.push(keg.beer);
 
+    console.log("oldkeg");
     console.log(oldKeg)
 
     try{

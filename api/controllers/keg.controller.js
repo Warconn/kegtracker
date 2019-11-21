@@ -37,8 +37,10 @@ exports.createKeg = async function(req, res, next){
     var keg = {
         kegnum: req.body.kegnum,
         kegcapacity: req.body.kegcapacity,
-        beername: req.body.beername, 
-        currentvolume: req.body.currentvolume
+        currentvolume: req.body.currentvolume,
+        beer: {
+            beername: req.body.beer.beername,
+        }
     }
 
     try{
@@ -56,25 +58,25 @@ exports.createKeg = async function(req, res, next){
 }
 
 exports.updateKeg = async function(req, res, next){
-
-    // Id is necessary for the update
-
     if(!req.body._id){
         return res.status(400).json({status: 400., message: "Id must be present"})
     }
 
     var id = req.body._id;
 
-    console.log(req.body)
+    console.log("req.body");
+    console.log(req.body);
 
     var keg = {
         id,
         kegnum: req.body.kegnum ? req.body.kegnum : null,
         kegcapacity: req.body.kegcapacity ? req.body.kegcapacity : null, 
-        beername: req.body.beername ? req.body.beername : "", 
-        currentvolume: req.body.currentvolume ? req.body.currentvolume : null
+        currentvolume: req.body.currentvolume ? req.body.currentvolume : null,
+        beer: req.body.beer ? req.body.beer : null
     }
 
+    console.log("keg")
+    console.log(keg);
     try{
         var updatedKeg = await KegService.updateKeg(keg)
         return res.status(200).json({status: 200, data: updatedKeg, message: "Succesfully Updated keg"})
