@@ -19,7 +19,6 @@ import { AdminComponent } from './components/admin/admin.component';
 import { NgxLiquidGaugeModule } from 'ngx-liquid-gauge';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import { KegFormComponent } from './components/keg-form/keg-form.component';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
@@ -29,8 +28,7 @@ import { MatCardModule } from '@angular/material/card';
   declarations: [
     NavbarComponent,
     DashboardComponent,
-    AdminComponent,
-    KegFormComponent
+    AdminComponent
   ],
   imports: [
     BrowserModule,

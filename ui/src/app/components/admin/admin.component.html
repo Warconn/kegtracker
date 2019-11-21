@@ -1,1 +1,27 @@
-<app-keg-form></app-keg-form>
+<div *ngIf="kegList">
+    <mat-grid-list [cols]="kegList.length" gutterSize="5px">
+      <mat-grid-tile *ngFor="let keg of kegList" style="text-align: center;">
+        <mat-card class="shipping-card">
+          <mat-card-header>
+            <mat-card-title>{{keg.beername}}</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <div class="row">
+              <div class="col">
+                <mat-form-field class="full-width">
+                  <input matInput placeholder="Beer Name" [value]="keg.beername">
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <mat-form-field class="full-width">
+                  <input matInput placeholder="Beer Name" [value]="keg.beername">
+                </mat-form-field>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>  
