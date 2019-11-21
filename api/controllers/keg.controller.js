@@ -38,9 +38,7 @@ exports.createKeg = async function(req, res, next){
         kegnum: req.body.kegnum,
         kegcapacity: req.body.kegcapacity,
         currentvolume: req.body.currentvolume,
-        beer: {
-            beername: req.body.beer.beername,
-        }
+        beer: req.body.beer
     }
 
     try{
@@ -86,7 +84,7 @@ exports.updateKeg = async function(req, res, next){
 }
 
 exports.removeKeg = async function(req, res, next){
-
+    
     var id = req.params.id;
 
     try{

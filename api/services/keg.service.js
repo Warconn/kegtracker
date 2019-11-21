@@ -34,26 +34,19 @@ exports.getKegs = async function(query, page, limit){
 }
 
 exports.createKeg = async function(keg){
-    
-    // Creating a new Mongoose Object by using the new keyword
-
     var newKeg = new Keg({
         kegnum: keg.kegnum,
         kegcapacity: keg.kegcapacity,
         currentvolume: keg.currentvolume,
-        beer: {
-            beername: keg.beer.beername,
-        },
+        beer: []
     });
+    newKeg.beer.push(keg.beer);
 
     try{
         var savedKeg = await newKeg.save()
 
         return savedKeg;
     }catch(e){
-      
-        // return a Error message describing the reason     
-
         throw Error("Error while Creating keg")
     }
 }
@@ -70,17 +63,11 @@ exports.updateKeg = async function(keg){
         return false;
     }
 
-    console.log("keg.beer");
-    console.log(keg.beer)
-
     oldKeg.kegnum = keg.kegnum
     oldKeg.kegcapacity = keg.kegcapacity
     oldKeg.currentvolume = keg.currentvolume
     oldKeg.beer = new Array;
     oldKeg.beer.push(keg.beer);
-
-    console.log("oldkeg");
-    console.log(oldKeg)
 
     try{
         var savedKeg = await oldKeg.save()
@@ -92,6 +79,8 @@ exports.updateKeg = async function(keg){
 
 exports.deleteKeg = async function(id){
 
+    console.log("attempting to delete keg id" + id)
+
     try{
         var deleted = await Keg.remove({_id: id})
         if(deleted.result.n === 0){
@@ -99,6 +88,6 @@ exports.deleteKeg = async function(id){
         }
         return deleted
     }catch(e){
-        throw Error("Error Occured while Deleting the Keg")
+        throw Error("Error Occured while Deleting the Keg" + e)
     }
 }
