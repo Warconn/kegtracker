@@ -18,7 +18,6 @@ export class DashboardComponent implements OnInit {
   //An Empty list for the visible todo list
   kegList: Keg[];
 
-
   ngOnInit(): void {
 
     //At component initialization the 
