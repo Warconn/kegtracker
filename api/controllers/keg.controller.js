@@ -27,7 +27,7 @@ exports.createKeg = async function(req, res, next){
         var createdKeg = await KegService.createKeg(keg)
         return res.status(201).json({status: 201, data: createdKeg, message: "Succesfully Created Keg"})
     }catch(e){
-        return res.status(400).json({status: 400, message: "Keg Creation was Unsuccesfull"})
+        return res.status(400).json({status: 400, message: "Keg Creation was Unsuccesfull" + e})
     }
 }
 
