@@ -23,12 +23,14 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatCardModule } from '@angular/material/card';
 import { FormsModule } from '@angular/forms';
+import { CreatenewkegComponent } from './components/createnewkeg/createnewkeg.component';
 
 @NgModule({
   declarations: [
     NavbarComponent,
     DashboardComponent,
-    AdminComponent
+    AdminComponent,
+    CreatenewkegComponent
   ],
   imports: [
     BrowserModule,
