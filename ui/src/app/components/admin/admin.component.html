@@ -1,1 +1,55 @@
-<p>admin works!</p>
+
+<h1 style="text-align: center;">Edit Active Kegs</h1> 
+<div *ngIf="kegList">
+    <mat-grid-list [cols]="kegList.length" >
+      <mat-grid-tile *ngFor="let keg of kegList" style="text-align: center;">
+        <mat-card>
+            <mat-card-header>
+                <mat-card-title>{{keg.beer[0].beername}}</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <div class="row">
+                    <div class="col">
+                        <mat-form-field class="full-width">
+                            <input matInput placeholder="Keg Capacity(oz)" [(ngModel)]="keg.kegcapacity">
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <mat-form-field class="full-width">
+                            <input matInput placeholder="Current Volume(oz)" [(ngModel)]="keg.currentvolume">
+                        </mat-form-field>
+                    </div>
+                </div>
+            </mat-card-content>
+            <mat-card-content>
+                <div class="row">
+                    <div class="col">
+                        <mat-form-field class="full-width">
+                        <input matInput placeholder="Beer Name" [(ngModel)]="keg.beer[0].beername">
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <mat-form-field class="full-width">
+                            <input matInput placeholder="ABV" [(ngModel)]="keg.beer[0].abv">
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <mat-form-field class="full-width">
+                            <input matInput placeholder="IBU" [(ngModel)]="keg.beer[0].ibu">
+                        </mat-form-field>
+                    </div>
+                </div>
+            </mat-card-content>
+            <mat-card-actions>
+                    <button (click)="saveKeg(keg)">Update</button>
+            </mat-card-actions>
+        </mat-card>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>  

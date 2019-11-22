@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { KegtrackingService } from '@app/services/kegtracking.service';
+import Keg from '@app/models/keg.model';
 
 @Component({
   selector: 'app-admin',
@@ -7,9 +9,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private kegService: KegtrackingService
+  ) { }
+  kegList: Keg[];
 
-  ngOnInit() {
+  ngOnInit(): void {
+    this.kegService.getKegs()
+      .subscribe(kegs => {
+        this.kegList = kegs
+        console.log(kegs)
+    })
+  }
+  
+  saveKeg(keg: Keg) {
+    console.log("saving keg");
+    console.log(keg);
+    this.kegService.editKeg(keg)
+      .subscribe(ret => {
+        console.log(ret);
+    })
   }
 
 }

@@ -18,7 +18,6 @@ export class DashboardComponent implements OnInit {
   //An Empty list for the visible todo list
   kegList: Keg[];
 
-
   ngOnInit(): void {
 
     //At component initialization the 
@@ -35,7 +34,7 @@ export class DashboardComponent implements OnInit {
     if(keg.currentvolume > 1){  //current volume is greater than 1
       console.log("Current Volume: " + keg.currentvolume);
       
-      console.log(keg.beername +" poured " + ounces + "ounces");
+      console.log(keg.beer[0].beername +" poured " + ounces + "ounces");
 
       //subtract a pint
       keg.currentvolume--;

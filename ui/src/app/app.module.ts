@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { KegtrackingService } from './services/kegtracking.service';
-import { FormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -18,6 +17,12 @@ import { DashboardComponent } from '@app/components/dashboard/dashboard.componen
 import { AdminComponent } from './components/admin/admin.component';
 import { NgxLiquidGaugeModule } from 'ngx-liquid-gauge';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatCardModule } from '@angular/material/card';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -38,7 +43,13 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
     MatListModule,
     MatGridListModule,
     NgxLiquidGaugeModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    MatRadioModule,
+    MatCardModule,
+    FormsModule
   ],
   providers: [
     KegtrackingService
