@@ -1,10 +1,28 @@
+
+<h1 style="text-align: center;">Edit Active Kegs</h1> 
 <div *ngIf="kegList">
-    <mat-grid-list [cols]="kegList.length" gutterSize="5px">
+    <mat-grid-list [cols]="kegList.length" >
       <mat-grid-tile *ngFor="let keg of kegList" style="text-align: center;">
-        <mat-card class="shipping-card">
+        <mat-card>
             <mat-card-header>
                 <mat-card-title>{{keg.beer[0].beername}}</mat-card-title>
             </mat-card-header>
+            <mat-card-content>
+                <div class="row">
+                    <div class="col">
+                        <mat-form-field class="full-width">
+                            <input matInput placeholder="Keg Capacity(oz)" [(ngModel)]="keg.kegcapacity">
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <mat-form-field class="full-width">
+                            <input matInput placeholder="Current Volume(oz)" [(ngModel)]="keg.currentvolume">
+                        </mat-form-field>
+                    </div>
+                </div>
+            </mat-card-content>
             <mat-card-content>
                 <div class="row">
                     <div class="col">
@@ -16,14 +34,14 @@
                 <div class="row">
                     <div class="col">
                         <mat-form-field class="full-width">
-                            <input matInput placeholder="Current Volume" [(ngModel)]="keg.currentvolume">
+                            <input matInput placeholder="ABV" [(ngModel)]="keg.beer[0].abv">
                         </mat-form-field>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col">
                         <mat-form-field class="full-width">
-                            <input matInput placeholder="Keg Capacity" [(ngModel)]="keg.kegcapacity">
+                            <input matInput placeholder="IBU" [(ngModel)]="keg.beer[0].ibu">
                         </mat-form-field>
                     </div>
                 </div>
