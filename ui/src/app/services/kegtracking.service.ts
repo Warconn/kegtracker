@@ -27,7 +27,6 @@ export class KegtrackingService {
 
   editKeg(keg:Keg){
     let editUrl = `${this.kegUrl}`
-    console.log(keg);
     
     //cleanse the id out of the beer body
     delete keg.beer[0]['_id'];
