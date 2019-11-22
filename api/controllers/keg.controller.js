@@ -60,26 +60,23 @@ exports.updateKeg = async function(req, res, next){
         return res.status(400).json({status: 400., message: "Id must be present"})
     }
 
+    console.log("new req.body.beer");
+    console.log(req.body.beer[0]);
+
     var id = req.body._id;
-
-    console.log("req.body");
-    console.log(req.body);
-
     var keg = {
         id,
-        kegnum: req.body.kegnum ? req.body.kegnum : null,
+        kegnum: req.body.kegnum ? req.body.kegnum : 0,
         kegcapacity: req.body.kegcapacity ? req.body.kegcapacity : null, 
         currentvolume: req.body.currentvolume ? req.body.currentvolume : null,
         beer: req.body.beer ? req.body.beer : null
     }
 
-    console.log("keg")
-    console.log(keg);
     try{
         var updatedKeg = await KegService.updateKeg(keg)
         return res.status(200).json({status: 200, data: updatedKeg, message: "Succesfully Updated keg"})
     }catch(e){
-        return res.status(400).json({status: 400., message: e.message})
+        return res.status(400).json({status: 400., message: "404" + e.message})
     }
 }
 

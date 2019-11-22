@@ -21,7 +21,7 @@ export class AdminComponent implements OnInit {
         console.log(kegs)
     })
   }
-
+  
   saveKeg(keg: Keg) {
     console.log("saving keg");
     console.log(keg);
@@ -31,7 +31,4 @@ export class AdminComponent implements OnInit {
     })
   }
 
-  stringToNum(value){
-    return parseInt(value);
-  }
 }

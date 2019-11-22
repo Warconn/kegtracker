@@ -14,9 +14,7 @@ export class KegtrackingService {
   constructor(    private http: HttpClient
     ) { }
 
-    //Create todo, takes a ToDo Object
   createKeg(keg: Keg): Observable<any>{
-    //returns the observable of http post request 
     return this.http.post(`${this.kegUrl}`, keg);
   }
 
@@ -29,7 +27,11 @@ export class KegtrackingService {
 
   editKeg(keg:Keg){
     let editUrl = `${this.kegUrl}`
-    //returns the observable of http put request 
+    console.log(keg);
+    
+    //cleanse the id out of the beer body
+    delete keg.beer[0]['_id'];
+
     return this.http.put(editUrl, keg);
   }
 

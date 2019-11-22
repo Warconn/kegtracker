@@ -5,8 +5,6 @@ var Keg = require('../models/keg.model')
 // Saving the context of this module inside the _the variable
 _this = this
 
-// Async function to get the To do List
-
 exports.getKegs = async function(query, page, limit){
 
     // Options setup for the mongoose paginate
@@ -53,21 +51,26 @@ exports.createKeg = async function(keg){
 
 exports.updateKeg = async function(keg){
     var id = keg.id
-
     try{  
         var oldKeg = await Keg.findById(id);
-    }catch(e){
+    }catch(e){;
         throw Error("Error occured while Finding the keg")
     }
+
     if(!oldKeg){
         return false;
     }
 
+    console.log("keg.beer");
+    console.log(keg.beer);
+
     oldKeg.kegnum = keg.kegnum
     oldKeg.kegcapacity = keg.kegcapacity
     oldKeg.currentvolume = keg.currentvolume
-    oldKeg.beer = new Array;
-    oldKeg.beer.push(keg.beer);
+    oldKeg.beer = keg.beer
+
+    console.log("oldKeg.beer");
+    console.log(oldKeg.beer);
 
     try{
         var savedKeg = await oldKeg.save()
