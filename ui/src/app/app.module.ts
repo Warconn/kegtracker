@@ -22,7 +22,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatCardModule } from '@angular/material/card';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CreatenewkegComponent } from './components/createnewkeg/createnewkeg.component';
 
 @NgModule({
@@ -51,7 +51,8 @@ import { CreatenewkegComponent } from './components/createnewkeg/createnewkeg.co
     MatSelectModule,
     MatRadioModule,
     MatCardModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule 
   ],
   providers: [
     KegtrackingService
