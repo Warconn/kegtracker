@@ -8,7 +8,7 @@ export class ToastingServiceService {
 
   constructor( private _snackBar: MatSnackBar) { }
 
-  toast(ret: Object, successString = "Success!", failString = "Failure...", useException = false){
+  toastCRUD(ret: Object, successString = "Success!", useException = false, failString = "Failure...", actionTitle = ""){
     var toastMessage = "";
     var retObj;
     retObj = ret; 
@@ -20,8 +20,15 @@ export class ToastingServiceService {
       useException ? toastMessage = retObj.message: toastMessage = failString;
     }
 
-    this._snackBar.open(toastMessage, "", {
+    return this._snackBar.open(toastMessage, actionTitle, {
       duration: 2000,
     }); 
   }
+
+  toastMessage(toastMessage = "", actionTitle = ""){
+    return this._snackBar.open(toastMessage, actionTitle, {
+      duration: 2000,
+    }); 
+  }
+
 }

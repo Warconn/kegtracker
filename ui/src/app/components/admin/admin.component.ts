@@ -29,7 +29,7 @@ export class AdminComponent implements OnInit {
   saveKeg(keg: Keg) {
     this.kegService.editKeg(keg)
       .subscribe(ret => {
-        this.toastService.toast(ret, "Successfully saved keg!", "", true);
+        this.toastService.toastCRUD(ret, "Successfully saved keg!", true);
     })
   }
 
@@ -39,7 +39,7 @@ export class AdminComponent implements OnInit {
 
     this.kegService.createKeg(keg)
       .subscribe(ret => {
-        this.toastService.toast(ret, "Successfully created keg", "",true);
+        this.toastService.toastCRUD(ret, "Successfully created keg", true);
     }) 
   }
 
