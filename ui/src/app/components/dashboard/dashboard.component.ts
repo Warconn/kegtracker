@@ -27,14 +27,13 @@ export class DashboardComponent implements OnInit {
   }
 
   pourBeer(keg: Keg, ounces: number, override = false) {
-    if(keg.currentvolume > 1 || override){  //current volume is greater than 1
-      console.log("Current Volume: " + keg.currentvolume);
-      console.log(keg.beer[0].beername +" poured " + ounces + "ounces");
+    //Double check the current volume is greater than what is attempting to be poured
+    if(keg.currentvolume > ounces || override){ 
 
+      //subtract them
       keg.currentvolume = keg.currentvolume - ounces;
-      console.log("New Volume: " + keg.currentvolume);
       
-      var returnObject;
+      var returnObject; //needed to capture the return object of the PUT
       this.kegService.editKeg(keg)
         .subscribe(ret => {
           returnObject = ret;
@@ -53,7 +52,9 @@ export class DashboardComponent implements OnInit {
           });         
         })
     }
-    else{
+    else{ //If there is not enough volume estimated left in the keg,
+          //but we poured it already, allow for the estimation to be 
+          //overridden and logged. 
       var snackBarRet = this._snackBar.open("This keg is already empty or below expected volume", "Still Pour?", {
         duration: 2000,
       });    
