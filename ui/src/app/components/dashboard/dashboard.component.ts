@@ -26,13 +26,11 @@ export class DashboardComponent implements OnInit {
       })
   }
 
-  pourBeer(keg: Keg, ounces: number) {
-    if(keg.currentvolume > 1){  //current volume is greater than 1
+  pourBeer(keg: Keg, ounces: number, override = false) {
+    if(keg.currentvolume > 1 || override){  //current volume is greater than 1
       console.log("Current Volume: " + keg.currentvolume);
-      
       console.log(keg.beer[0].beername +" poured " + ounces + "ounces");
 
-      //subtract a pint
       keg.currentvolume = keg.currentvolume - ounces;
       console.log("New Volume: " + keg.currentvolume);
       
@@ -40,15 +38,31 @@ export class DashboardComponent implements OnInit {
       this.kegService.editKeg(keg)
         .subscribe(ret => {
           returnObject = ret;
+          var toastMessage = "";
 
-          this._snackBar.open(returnObject.message, "", {
+          //Need to convert success into new volume
+          if(returnObject.status = "200"){
+            toastMessage = ounces + "oz have been poured from " + keg.beer[0].beername;
+          }
+          else{
+            toastMessage = returnObject.message;
+          }
+
+          this._snackBar.open(toastMessage, "", {
             duration: 2000,
-          });
-         
-          console.log(returnObject);
+          });         
         })
     }
-  }
+    else{
+      var snackBarRet = this._snackBar.open("This keg is already empty or below expected volume", "Still Pour?", {
+        duration: 2000,
+      });    
+
+      snackBarRet.onAction().subscribe(() => {
+        this.pourBeer(keg, ounces, true);
+      });
+    }
+  }  
 }
 
 
