@@ -23,6 +23,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatCardModule } from '@angular/material/card';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatSnackBarModule } from "@angular/material";
+
 
 @NgModule({
   declarations: [
@@ -50,7 +52,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatRadioModule,
     MatCardModule,
     FormsModule,
-    ReactiveFormsModule 
+    ReactiveFormsModule,
+    MatSnackBarModule
   ],
   providers: [
     KegtrackingService
