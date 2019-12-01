@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { KegtrackingService } from '@app/services/kegtracking.service';
 import Keg from '@app/models/keg.model';
 import { MatSnackBar } from '@angular/material';
+import { ToastingServiceService } from '@app/services/toasting-service.service';
 
 @Component({
   selector: 'app-admin',
@@ -12,8 +13,7 @@ export class AdminComponent implements OnInit {
 
   constructor(
     private kegService: KegtrackingService,
-    private _snackBar: MatSnackBar
-
+    private toastService: ToastingServiceService
   ) { }
   kegList: Keg[];
   newKeg:Keg = new Keg();
@@ -26,27 +26,10 @@ export class AdminComponent implements OnInit {
     })
   }
 
-  toast(ret: Object, successString = "Success!", failString = "Failure...", useException = false){
-    var toastMessage = "";
-    var retObj;
-    retObj = ret; 
-
-    if(retObj.status = "200"){
-      toastMessage = successString;
-    }
-    else{
-      useException ? toastMessage = retObj.message: toastMessage = failString;
-    }
-
-    this._snackBar.open(toastMessage, "", {
-      duration: 2000,
-    }); 
-  }
-
   saveKeg(keg: Keg) {
     this.kegService.editKeg(keg)
       .subscribe(ret => {
-        this.toast(ret, "Successfully saved keg!", "", true);
+        this.toastService.toast(ret, "Successfully saved keg!", "", true);
     })
   }
 
@@ -56,7 +39,7 @@ export class AdminComponent implements OnInit {
 
     this.kegService.createKeg(keg)
       .subscribe(ret => {
-       this.toast(ret, "Successfully created keg", "",true);
+        this.toastService.toast(ret, "Successfully created keg", "",true);
     }) 
   }
 
