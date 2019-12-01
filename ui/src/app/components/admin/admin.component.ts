@@ -26,48 +26,37 @@ export class AdminComponent implements OnInit {
     })
   }
 
+  toast(ret: Object, successString = "Success!", failString = "Failure...", useException = false){
+    var toastMessage = "";
+    var retObj;
+    retObj = ret; 
+
+    if(retObj.status = "200"){
+      toastMessage = successString;
+    }
+    else{
+      useException ? toastMessage = retObj.message: toastMessage = failString;
+    }
+
+    this._snackBar.open(toastMessage, "", {
+      duration: 2000,
+    }); 
+  }
 
   saveKeg(keg: Keg) {
-    var returnObject; 
     this.kegService.editKeg(keg)
       .subscribe(ret => {
-        returnObject = ret;
-        var toastMessage = "";
-
-        if(returnObject.status = "200"){
-          toastMessage = "Successfully Saved";
-        }
-        else{
-          toastMessage = returnObject.message;
-        }
-
-        this._snackBar.open(toastMessage, "", {
-          duration: 2000,
-        });   
-
+        this.toast(ret, "Successfully saved keg!", "", true);
     })
   }
 
   createNewKeg(keg: Keg){
-    var returnObject; 
     //assuming you are creating a full keg, copying capacity to volume
     keg.currentvolume = keg.kegcapacity;
 
     this.kegService.createKeg(keg)
       .subscribe(ret => {
-        returnObject = ret;
-        var toastMessage = "";
-
-        if(returnObject.status = "200"){
-          toastMessage = "Successfully Created";
-        }
-        else{
-          toastMessage = returnObject.message;
-        }
-
-        this._snackBar.open(toastMessage, "", {
-          duration: 2000,
-      });   
+       this.toast(ret, "Successfully created keg", "",true);
     }) 
   }
 
