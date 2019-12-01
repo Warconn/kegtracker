@@ -1,8 +1,7 @@
 
 <h1 style="text-align: center;">Edit Active Kegs</h1> 
-<div *ngIf="kegList">
-    <mat-grid-list [cols]="kegList.length + 1" >
-      <mat-grid-tile *ngFor="let keg of kegList" style="text-align: center;">
+    <mat-grid-list *ngIf="kegList" class="keginfo" [cols]="kegList.length + 1" >
+      <mat-grid-tile *ngFor="let keg of kegList" >
         <mat-card>
             <mat-card-header>
                 <mat-card-title>{{keg.beer[0].beername}}</mat-card-title>
@@ -46,7 +45,7 @@
                     </div>
                 </div>
             </mat-card-content>
-            <mat-card-actions>
+            <mat-card-actions style="text-align: center;">
                     <button (click)="saveKeg(keg)">Update</button>
             </mat-card-actions>
         </mat-card>
@@ -61,7 +60,7 @@
                     <div class="row">
                         <div class="col">
                             <mat-form-field class="full-width">
-                                <input matInput placeholder="Keg Capacity(oz)" [(ngModel)]="newKeg.kegcapacity">
+                                <input matInput placeholder="Keg Capacity(oz)" [(ngModel)]="newKeg.beer[0].kegcapacity">
                             </mat-form-field>
                         </div>
                     </div>
@@ -102,4 +101,3 @@
             </mat-card>
           </mat-grid-tile>
     </mat-grid-list>
-  </div>  
