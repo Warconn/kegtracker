@@ -1,0 +1,28 @@
+<div *ngIf="kegList">
+    <mat-grid-list [cols]="kegList.length" gutterSize="5px">
+      <mat-grid-tile *ngFor="let keg of kegList" style="text-align: center;">
+        <div>
+          <h2> {{keg.beer[0].beername}} </h2>
+          <lib-ngx-liquid-gauge 
+            [value]="keg.currentvolume" 
+            [minValue]="0" 
+            [maxValue]="keg.kegcapacity" 
+            [waveColor]="'#DAAA00'" 
+            [waveAnimate]="false" 
+            [circleColor]="'#000000'"
+            [waveRise]="false"
+            [displayPercent]="false"
+            [textColor]="'#FFFFFF'" 
+            [waveTextColor]="'#FFFFFF'"
+           >
+          </lib-ngx-liquid-gauge>
+          <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+            <mat-button-toggle (click)="pourBeer(keg, 16)">Pour Bottle!</mat-button-toggle>
+            <mat-button-toggle (click)="pourBeer(keg, 12)">Pour Pint!</mat-button-toggle>
+            <mat-button-toggle (click)="pourBeer(keg, 64)">Pour Growler!</mat-button-toggle>
+          </mat-button-toggle-group>          
+        </div>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+    
