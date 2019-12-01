@@ -37,7 +37,7 @@ export class DashboardComponent implements OnInit {
       console.log(keg.beer[0].beername +" poured " + ounces + "ounces");
 
       //subtract a pint
-      keg.currentvolume--;
+      keg.currentvolume = keg.currentvolume - ounces;
       console.log("New Volume: " + keg.currentvolume);
 
       this.kegService.editKeg(keg)
