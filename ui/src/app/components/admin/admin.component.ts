@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { KegtrackingService } from '@app/services/kegtracking.service';
 import Keg from '@app/models/keg.model';
+import { MatSnackBar } from '@angular/material';
+import { ToastingServiceService } from '@app/services/toasting-service.service';
 
 @Component({
   selector: 'app-admin',
@@ -10,7 +12,8 @@ import Keg from '@app/models/keg.model';
 export class AdminComponent implements OnInit {
 
   constructor(
-    private kegService: KegtrackingService
+    private kegService: KegtrackingService,
+    private toastService: ToastingServiceService
   ) { }
   kegList: Keg[];
   newKeg:Keg = new Keg();
@@ -22,13 +25,11 @@ export class AdminComponent implements OnInit {
         console.log(kegs)
     })
   }
-  
+
   saveKeg(keg: Keg) {
-    console.log("saving keg");
-    console.log(keg);
     this.kegService.editKeg(keg)
       .subscribe(ret => {
-        console.log(ret);
+        this.toastService.toastCRUD(ret, "Successfully saved keg!", true);
     })
   }
 
@@ -36,13 +37,10 @@ export class AdminComponent implements OnInit {
     //assuming you are creating a full keg, copying capacity to volume
     keg.currentvolume = keg.kegcapacity;
 
-    console.log("creating new keg");
-    console.log(keg);
-
     this.kegService.createKeg(keg)
       .subscribe(ret => {
-        console.log(ret);
-      }) 
+        this.toastService.toastCRUD(ret, "Successfully created keg", true);
+    }) 
   }
 
 }

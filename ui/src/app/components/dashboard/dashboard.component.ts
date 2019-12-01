@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {KegtrackingService} from '@app/services/kegtracking.service';
 import Keg from '@app/models/keg.model';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { ToastingServiceService } from '@app/services/toasting-service.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,42 +12,44 @@ import Keg from '@app/models/keg.model';
 export class DashboardComponent implements OnInit {
 
   constructor(
-    private kegService: KegtrackingService
+    private kegService: KegtrackingService,
+    private _snackBar: MatSnackBar,
+    private toastService: ToastingServiceService
   ) { }
 
   public newKeg: Keg = new Keg()
-
-  //An Empty list for the visible todo list
   kegList: Keg[];
 
   ngOnInit(): void {
-
-    //At component initialization the 
     this.kegService.getKegs()
       .subscribe(kegs => {
-        //assign the todolist property to the proper http response
         this.kegList = kegs
         console.log(kegs)
       })
   }
 
-  pourBeer(keg: Keg, ounces: number) {
-    
-    if(keg.currentvolume > 1){  //current volume is greater than 1
-      console.log("Current Volume: " + keg.currentvolume);
-      
-      console.log(keg.beer[0].beername +" poured " + ounces + "ounces");
+  pourBeer(keg: Keg, ounces: number, override = false) {
+    //Double check the current volume is greater than what is attempting to be poured
+    if(keg.currentvolume > ounces || override){ 
 
-      //subtract a pint
+      //subtract them
       keg.currentvolume = keg.currentvolume - ounces;
-      console.log("New Volume: " + keg.currentvolume);
 
       this.kegService.editKeg(keg)
         .subscribe(ret => {
-          console.log(ret);
+          this.toastService.toastCRUD(ret, ounces + "oz have been poured from " + keg.beer[0].beername);
         })
     }
-  }
+    else{ //If there is not enough volume estimated left in the keg,
+          //but we poured it already, allow for the estimation to be 
+          //overridden and logged. 
+      var snackBarRet = this.toastService.toastMessage("This keg is already empty or below expected volume", "Still Pour?");    
+
+      snackBarRet.onAction().subscribe(() => {
+        this.pourBeer(keg, ounces, true);
+      });
+    }
+  }  
 }
 
 
