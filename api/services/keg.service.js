@@ -20,10 +20,9 @@ exports.createKeg = async function(keg){
     var newKeg = new Keg({
         kegnum: keg.kegnum,
         kegcapacity: keg.kegcapacity,
-        currentvolume: keg.currentvolume,
-        beer: []
+        currentvolume: keg.currentvolume
     });
-    newKeg.beer.push(keg.beer);
+    newKeg.beer = keg.beer;
 
     try{
         var savedKeg = await newKeg.save()

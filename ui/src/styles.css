@@ -277,7 +277,7 @@
   .mat-grid-tile-header .mat-line,
   .mat-grid-tile-footer .mat-line {
     white-space: nowrap;
-    overflow: hidden;
+    overflow: visible;
     text-overflow: ellipsis;
     display: block;
     box-sizing: border-box; }
@@ -349,7 +349,7 @@ input.mat-input-element {
   font-size: 16px; }
   .mat-list-base .mat-list-item .mat-line {
     white-space: nowrap;
-    overflow: hidden;
+    overflow: visible;
     text-overflow: ellipsis;
     display: block;
     box-sizing: border-box; }
@@ -360,7 +360,7 @@ input.mat-input-element {
   font-size: 16px; }
   .mat-list-base .mat-list-option .mat-line {
     white-space: nowrap;
-    overflow: hidden;
+    overflow: visible;
     text-overflow: ellipsis;
     display: block;
     box-sizing: border-box; }
@@ -376,7 +376,7 @@ input.mat-input-element {
   font-size: 12px; }
   .mat-list-base[dense] .mat-list-item .mat-line {
     white-space: nowrap;
-    overflow: hidden;
+    overflow: visible;
     text-overflow: ellipsis;
     display: block;
     box-sizing: border-box; }
@@ -387,7 +387,7 @@ input.mat-input-element {
   font-size: 12px; }
   .mat-list-base[dense] .mat-list-option .mat-line {
     white-space: nowrap;
-    overflow: hidden;
+    overflow: visible;
     text-overflow: ellipsis;
     display: block;
     box-sizing: border-box; }
@@ -733,7 +733,7 @@ body {
   border-radius: 50%;
   transition: transform 200ms ease-in-out;
   transform: scale(0.6);
-  overflow: hidden;
+  overflow: visible;
   white-space: nowrap;
   text-overflow: ellipsis;
   pointer-events: none; }

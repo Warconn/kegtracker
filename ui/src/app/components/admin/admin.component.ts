@@ -13,6 +13,7 @@ export class AdminComponent implements OnInit {
     private kegService: KegtrackingService
   ) { }
   kegList: Keg[];
+  newKeg:Keg = new Keg();
 
   ngOnInit(): void {
     this.kegService.getKegs()
@@ -29,6 +30,19 @@ export class AdminComponent implements OnInit {
       .subscribe(ret => {
         console.log(ret);
     })
+  }
+
+  createNewKeg(keg: Keg){
+    //assuming you are creating a full keg, copying capacity to volume
+    keg.currentvolume = keg.kegcapacity;
+
+    console.log("creating new keg");
+    console.log(keg);
+
+    this.kegService.createKeg(keg)
+      .subscribe(ret => {
+        console.log(ret);
+      }) 
   }
 
 }
